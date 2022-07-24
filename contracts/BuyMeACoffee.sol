@@ -30,6 +30,11 @@ contract BuyMeACoffee {
         owner = payable(msg.sender);
     }
 
+    function changeOwner(address payable newOwner) public {
+        require(msg.sender == owner, "Only Owner can elect new Owner");
+        owner = newOwner;
+    }
+
     function buyCoffee(string memory _name, string memory _message) public payable {
         require(msg.value > 0, "Can't buy coffee with 0 Eth");
 
